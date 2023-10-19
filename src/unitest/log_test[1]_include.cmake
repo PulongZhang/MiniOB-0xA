@@ -1,0 +1,5 @@
+if(EXISTS "/home/zpl/workspace/MiniOB-0xA/src/unitest/log_test[1]_tests.cmake")
+  include("/home/zpl/workspace/MiniOB-0xA/src/unitest/log_test[1]_tests.cmake")
+else()
+  add_test(log_test_NOT_BUILT log_test_NOT_BUILT)
+endif()

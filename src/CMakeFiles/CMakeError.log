@@ -1,0 +1,82 @@
+Determining if files stdio.h;readline/readline.h exist failed with the following output:
+Change Dir: /home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_97db8/fast && /usr/bin/make -f CMakeFiles/cmTC_97db8.dir/build.make CMakeFiles/cmTC_97db8.dir/build
+make[1]: Entering directory '/home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_97db8.dir/HAVE_READLINE_HEADER.c.o
+/usr/bin/cc   -Wall -DCMAKE_EXPORT_COMPILE_COMMANDS=1  -O2 -g     -o CMakeFiles/cmTC_97db8.dir/HAVE_READLINE_HEADER.c.o   -c /home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CheckIncludeFiles/HAVE_READLINE_HEADER.c
+/home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CheckIncludeFiles/HAVE_READLINE_HEADER.c:3:10: fatal error: readline/readline.h: No such file or directory
+    3 | #include <readline/readline.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_97db8.dir/build.make:66: CMakeFiles/cmTC_97db8.dir/HAVE_READLINE_HEADER.c.o] Error 1
+make[1]: Leaving directory '/home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_97db8/fast] Error 2
+
+
+Source:
+/* */
+#include <stdio.h>
+#include <readline/readline.h>
+
+
+int main(void){return 0;}
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_87a11/fast && /usr/bin/make -f CMakeFiles/cmTC_87a11.dir/build.make CMakeFiles/cmTC_87a11.dir/build
+make[1]: Entering directory '/home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_87a11.dir/src.c.o
+/usr/bin/cc   -Wall -DCMAKE_EXPORT_COMPILE_COMMANDS=1  -O2 -g  -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_87a11.dir/src.c.o   -c /home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_87a11
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87a11.dir/link.txt --verbose=1
+/usr/bin/cc  -Wall -DCMAKE_EXPORT_COMPILE_COMMANDS=1  -O2 -g  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_87a11.dir/src.c.o  -o cmTC_87a11 
+/usr/bin/ld: CMakeFiles/cmTC_87a11.dir/src.c.o: in function `main':
+/home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp/src.c:11: undefined reference to `pthread_create'
+/usr/bin/ld: /home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp/src.c:12: undefined reference to `pthread_detach'
+/usr/bin/ld: /home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp/src.c:13: undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_87a11.dir/build.make:87: cmTC_87a11] Error 1
+make[1]: Leaving directory '/home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_87a11/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0fd50/fast && /usr/bin/make -f CMakeFiles/cmTC_0fd50.dir/build.make CMakeFiles/cmTC_0fd50.dir/build
+make[1]: Entering directory '/home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0fd50.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall -DCMAKE_EXPORT_COMPILE_COMMANDS=1  -O2 -g  -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_0fd50.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_0fd50
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0fd50.dir/link.txt --verbose=1
+/usr/bin/cc  -Wall -DCMAKE_EXPORT_COMPILE_COMMANDS=1  -O2 -g  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_0fd50.dir/CheckFunctionExists.c.o  -o cmTC_0fd50  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_0fd50.dir/build.make:87: cmTC_0fd50] Error 1
+make[1]: Leaving directory '/home/zpl/workspace/MiniOB-0xA/src/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_0fd50/fast] Error 2
+
+
+
